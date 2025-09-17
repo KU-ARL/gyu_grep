@@ -25,3 +25,6 @@ functions.o: functions.c grep.h
 # 'make clean'을 실행하면 컴파일된 파일들을 삭제한다.
 clean:
 	rm -f $(TARGET) *.o
+
+test: $(TARGET)
+	./$(TARGET) -n "void" test.c

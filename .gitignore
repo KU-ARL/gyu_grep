@@ -1,3 +1,4 @@
 *.o
 *.exe
 gyu_grep
+test.c
