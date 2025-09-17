@@ -2,7 +2,7 @@
 
 #include "grep.h"
 
-void search_in_file(const char *pattern, const char *filename, int show_line_numbers) {
+void search_in_file(const char *pattern, const char *filename, int show_line_numbers, int case_insensitive) {
     FILE *fp=fopen(filename, "r");
     if (fp == NULL) {
         perror(filename);
@@ -12,9 +12,15 @@ void search_in_file(const char *pattern, const char *filename, int show_line_num
     char line[1024];
     int line_num = 1;
 
-    while (fgets(line, sizeof(line), fp) != NULL) {  // TODO : mmap 방법도 도전해보기
+    while (fgets(line, sizeof(line), fp) != NULL) {     // TODO : mmap 방법도 도전해보기
+
+        char *match;
         
-        char *match = strstr(line, pattern);
+        if (case_insensitive) {
+            match = strcasestr(line, pattern);     // strcasestr : 대소문자 구분 X
+        } else {
+            match = strstr(line, pattern);        // strstr : 대소문자 구분
+        }
 
         if (match != NULL) {
             if (show_line_numbers) {
