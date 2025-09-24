@@ -1,7 +1,21 @@
-// functions.c
+#include "file_processor.h"
 
-#include "grep.h"
 
+// 각 줄을 처리하는 헬퍼 함수
+static void process_line(const char *line, int line_num, const grep_config *config) {
+    // 라인 처리 로직 (검색 및 출력)
+}
+
+// 전체 파일을 받아서 하나하나 처리
+void process_files(const file_list *list, const grep_config *config) [
+
+];
+
+
+
+
+/*
+// 기존 코드
 void search_in_file(const char *pattern, const char *filename, int show_line_numbers, int case_insensitive) {
     FILE *fp=fopen(filename, "r");
     if (fp == NULL) {
@@ -39,3 +53,5 @@ void search_in_file(const char *pattern, const char *filename, int show_line_num
     fclose(fp);
 
 }
+
+*/
